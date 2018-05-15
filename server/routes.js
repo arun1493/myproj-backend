@@ -1,13 +1,13 @@
 /**
  * Importing various routes modules
  */
-import test from './modules/product';
+import product from './modules/product';
 
 /**
  * Adding them to apiRouter
  */
 let router = (apiRouter) => {
-  test(apiRouter);
+  product(apiRouter);
 };
 
 module.exports = router;

@@ -13,7 +13,6 @@ let apiRouter = express.Router();
  */
 let serverRoutes = require('./routes');
 serverRoutes(apiRouter);
-
 app.use(cors, logger);
 app.use(bodyParser.urlencoded({
   extended: false

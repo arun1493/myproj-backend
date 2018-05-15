@@ -3,20 +3,27 @@ import responder from '../core/middlewares/responder';
 
 let product = {
   getAll: (req, res) => {
-    ProductController.getAll( (err, data) => {
+    ProductController.getAll((err, data) => {
       responder(req, res, err, data);
     });
   },
+
   create: (req, res) => {
-    console.log('inside first')
-    ProductController.save( 'Mohith', (err) => {
+    const payload = req.body;
+    ProductController.save(payload, (err, response) => {
       if (err) {
-        err.msg = 'Username already exists';
+        err.msg = 'Unable to add product';
         responder(req, res, err);
       } else {
-        let data = 'Success';
-        responder(req, res, err, data);
+        responder(req, res, err, response);
       }
+    });
+  },
+
+  delete: (req, res) => {
+    const payload = req.params.id;
+    ProductController.delete(payload, (err, response) => {
+        responder(req, res, err, response);
     });
   }
 };
@@ -26,7 +33,8 @@ let product = {
  */
 let router = (apiRouter) => {
   apiRouter.get('/getProducts', product.getAll);
-  apiRouter.get('/createProduct', product.create);
+  apiRouter.post('/createProduct', product.create);
+  apiRouter.delete('/deleteProduct/:id', product.delete);
 };
 
 export default router;
