@@ -25,6 +25,12 @@ let Controllers = {
     Product.remove({_id: productId}, function(err) {
       callback(err);
     });
+  },
+
+  update: (productId, productData, callback) => {
+    Product.findOneAndUpdate({_id: productId}, productData, {upsert: false, new: true, fields: {__v: 0}}, function(err, data){
+      callback(err, data);
+    });
   }
 };
 

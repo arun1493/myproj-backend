@@ -23,7 +23,15 @@ let product = {
   delete: (req, res) => {
     const payload = req.params.id;
     ProductController.delete(payload, (err, response) => {
-        responder(req, res, err, response);
+      responder(req, res, err, response);
+    });
+  },
+
+  update: (req, res) => {
+    const productId = req.params.id;
+    const productData = req.body;
+    ProductController.update(productId, productData, (err, response) => {
+      responder(req, res, err, response);
     });
   }
 };
@@ -35,6 +43,7 @@ let router = (apiRouter) => {
   apiRouter.get('/getProducts', product.getAll);
   apiRouter.post('/createProduct', product.create);
   apiRouter.delete('/deleteProduct/:id', product.delete);
+  apiRouter.put('/updateProduct/:id', product.update);
 };
 
 export default router;
