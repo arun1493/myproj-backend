@@ -1,20 +1,17 @@
 {
-  "name": "redux-express-starter",
+  "name": "Product",
   "version": "1.0.0",
-  "description": "Redux express starter kit",
+  "description": "Product server",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --progress --colors --watch -d",
-    "build": "webpack --progress --colors",
-    "server": "node ./server/index.js",
-    "lint": "eslint ./client ./server --ext .js --ext .jsx",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./server/index.js",
+    "build": "webpack --progress --colors"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mohithg/redux-express-starter"
+    "url": "https://github.com/arun1493/myproj-backend"
   },
-  "author": "Mohith G <mohithgm@gmail.com>",
+  "author": "Arun kumar <arunkumarvcet1@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
